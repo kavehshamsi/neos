@@ -1,0 +1,12 @@
+
+*.p
+*.o
+*.lo
+*.pyc
+.*
+!/.gitignore
+
+build/**
+lib/cudd/html/**
+lib/cudd/doc/**
+

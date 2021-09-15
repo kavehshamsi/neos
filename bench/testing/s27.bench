@@ -1,0 +1,22 @@
+
+# BENCH FILE 
+# circuit: 
+
+INPUT(in1)
+INPUT(in2)
+INPUT(in3)
+INPUT(in4)
+OUTPUT(o1)
+s1 = dff( w1 )
+s2 = dff( w2 )
+s3 = dff( w3 )
+w4 = not( in1 )
+o1 = not( w2 )
+w5 = and( w4, s2 )
+w6 = or( w7, w5 )
+w8 = or( in4, w5 )
+w9 = nand( w8, w6 )
+w1 = nor( w4, w2 )
+w2 = nor( s1, w9 )
+w7 = nor( in2, s3 )
+w3 = nor( in3, w7 )

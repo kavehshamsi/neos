@@ -1,0 +1,11 @@
+# circuit:
+INPUT(in0)
+INPUT(in1)
+INPUT(in2)
+INPUT(in3)
+INPUT(in4)
+INPUT(in5)
+INPUT(in6)
+INPUT(in7)
+OUTPUT(compout)
+compout = buf( gnd )
