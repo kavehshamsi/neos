@@ -28,10 +28,16 @@
 #include "dec/sail.h"
 #include "stat/stat.h"
 #include "base/blocks.h"
+#include "cmd/cmddefs.h"
 
 #include <filesystem>
 
 namespace cmd {
+
+#define FATAL_ERROR -1
+#define CMD_EXIT 2
+#define CMD_FAILURE 1
+#define CMD_SUCCESS 0
 
 using namespace ckt;
 using namespace aig_ns;
@@ -349,16 +355,20 @@ int neos_command_aigtest(int argc, char** argv) {
 	// sim_ckt2.write_bench();
 	//cktgph::cktgraph cktgp_sim1(sim_ckt2);
 	//cktgp_sim1.writeVizFile(arg_vec[2]);
-	return 0;
+	return CMD_SUCCESS;
 }
 
 int neos_command_refsm(int argc, char** argv) {
 	circuit sim_ckt;
 	vector<string> arg_vec(argv, argv + argc);
+	if (arg_vec.size() != 3) {
+		std::cout << "usage: refsm <bench_file> <max_num_states_explore>\n";
+		return CMD_FAILURE;
+	}
 	sim_ckt.read_bench(arg_vec[1]);
 	re::refsm refobj(sim_ckt);
 	refobj.enumerate_fsm(sim_ckt.latches(), stoi(arg_vec[2]));
-	return 0;
+	return CMD_SUCCESS;
 }
 
 int neos_command_bdd(int argc, char** argv) {
@@ -371,7 +381,7 @@ int neos_command_bdd(int argc, char** argv) {
 	dd::circuit_bdd cktbdd(cir, szl);
 	if (!cktbdd.isGood()) {
 		std::cout << "problem during bdd generation\n";
-		return 0;
+		return CMD_FAILURE;
 	}
 	std::cout << "bdd statistics: \n";
 	for (auto oid : cir.outputs()) {

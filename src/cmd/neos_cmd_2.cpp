@@ -19,6 +19,11 @@
 #include "enc/enc.h"
 #include "sat/qbf.h"
 
+#define FATAL_ERROR -1
+#define CMD_EXIT 2
+#define CMD_FAILURE 1
+#define CMD_SUCCESS 0
+
 namespace cmd {
 
 int neos_command_gen_block(int argc, char** argv) {
@@ -54,7 +59,7 @@ int neos_command_gen_block(int argc, char** argv) {
 
 	simcir.write_bench(arg_vec[2]);
 
-	return 0;
+	return CMD_SUCCESS;
 }
 
 int neos_command_limit_fanin(int argc, char** argv) {
@@ -70,7 +75,7 @@ int neos_command_limit_fanin(int argc, char** argv) {
 	incir.limit_fanin_size(stoi(arg_vec[3]));
 	incir.write_bench(arg_vec[2]);
 
-	return 0;
+	return CMD_SUCCESS;
 }
 
 

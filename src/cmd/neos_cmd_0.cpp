@@ -15,13 +15,9 @@
 #include "main/main.h"
 #include "parser/parser.h"
 #include "main/main_util.h"
+#include "cmd/cmddefs.h"
 
 namespace cmd {
-
-#define FATAL_ERROR -1
-#define CMD_EXIT 2
-#define CMD_FAILURE 1
-#define CMD_SUCCESS 0
 
 extern std::unique_ptr<cmdln_manager_t> _cmdmgr_ptr;
 

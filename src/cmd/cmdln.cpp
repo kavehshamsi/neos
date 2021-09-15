@@ -43,8 +43,6 @@ using namespace ext;
 // global pointer for command-line context
 std::unique_ptr<cmdln_manager_t> _cmdmgr_ptr;
 
-#define NEOS_ADD_COMMAND(fun) add_command()
-
 void cmdln_manager_t::init_commands() {
 	add_command("help", 		 neos_cmd("show help information", neos_command_help) );
 	add_command("select", 		 neos_cmd("select object from current context", neos_command_select) );
