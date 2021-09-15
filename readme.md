@@ -19,6 +19,14 @@
 
 The source code is released under the LICENSE_SRC license. The `./src` directory includes neos's source code, and the `./lib` directory includes external librarires, such as sat solvers and `cudd`. The `./pyneos` directory includes a python library for doing circuit operations and a z3 based deobufscation tool along with some graph utilities and benchmark generation (SPNs and random truth-tables synthesized by ABC). The `./misc` directory includes some miscellaneous code, namely for sequential and combinational oracle instances. 
 
+You will need to build `cudd` in order to compile from source. You can execute the following before running `make` in the `neos` directory to make sure cudd compiles correctly:
+
+```
+cd ./lib/cudd/
+autoreconf
+./configure --enable-obj --enable-shared --enable-static
+```
+
 
 # Usage #
 
